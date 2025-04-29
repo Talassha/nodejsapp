@@ -1,0 +1,49 @@
+pipeline {
+  agent any
+
+  environment {
+    REPO_URL = "git@github.com:usuario/tu-repo.git"
+    BRANCH = "main"
+    APP_NAME = "mi-app-backend"
+    CONTAINER_NAME = "mi-app-backend-container"
+    WORKDIR = "/home/backend/mi-app"
+    PORT = "3000"
+  }
+
+  stages {
+    stage('Clonar proyecto') {
+      steps {
+        sh '''
+          rm -rf $WORKDIR
+          git clone -b $BRANCH $REPO_URL $WORKDIR
+        '''
+      }
+    }
+
+    stage('Instalar dependencias') {
+      steps {
+        dir("$WORKDIR") {
+          sh 'npm install'
+        }
+      }
+    }
+
+    stage('Build Docker') {
+      steps {
+        dir("$WORKDIR") {
+          sh "docker build -t $APP_NAME ."
+        }
+      }
+    }
+
+    stage('Reiniciar contenedor') {
+      steps {
+        sh '''
+          docker stop $CONTAINER_NAME || true
+          docker rm $CONTAINER_NAME || true
+          docker run -d --name $CONTAINER_NAME -p $PORT:3000 $APP_NAME
+        '''
+      }
+    }
+  }
+}
