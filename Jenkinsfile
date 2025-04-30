@@ -8,7 +8,9 @@ pipeline {
           // Ejecuta npm install dentro del contenedor mynode
           // sh "docker exec mynode npm install --prefix $WORKDIR"
          // lo que haga en el volumen se hace en el host se refleja  sh "npm install --prefix $WORKDIR"
-
+          //creo un contenedor temporal para instalar las dependencias
+          // sh "docker run --rm -v $WORKDIR:/app -w /app node:18 npm install"
+          
             sh '''
               docker run --rm \
                  -v /home/ec2-user/devops/backend/nodejsapp:/app \
