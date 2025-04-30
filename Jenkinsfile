@@ -6,7 +6,8 @@ pipeline {
       steps {
         script {
           // Ejecuta npm install dentro del contenedor mynode
-          sh "docker exec mynode npm install --prefix $WORKDIR"
+          // sh "docker exec mynode npm install --prefix $WORKDIR"
+          sh "npm install --prefix $WORKDIR"
 
         }
       }
@@ -17,7 +18,7 @@ pipeline {
         script {
           // Construye la imagen Docker en mynode
           // sh "docker exec -T mynode docker build -t $APP_NAME $WORKDIR"
-          sh "docker buld -t $APP_NAME $WORKDIR"
+          sh "docker build -t $APP_NAME $WORKDIR"
         }
       }
     }
