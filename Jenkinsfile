@@ -6,7 +6,7 @@ pipeline {
       steps {
         script {
           // Ejecuta npm install dentro del contenedor mynode
-          sh "docker exec -T mynode npm install --prefix $WORKDIR"
+          sh "docker exec mynode npm install --prefix $WORKDIR"
 
         }
       }
