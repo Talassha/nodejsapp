@@ -1,25 +1,6 @@
 pipeline {
   agent any
 
-  environment {
-    REPO_URL = "git@github.com:usuario/tu-repo.git"
-    BRANCH = "main"
-    APP_NAME = "mi-app-backend"
-    CONTAINER_NAME = "mi-app-backend-container"
-    WORKDIR = "/home/backend/mi-app"
-    PORT = "3000"
-  }
-
-  stages {
-    stage('Clonar proyecto') {
-      steps {
-        sh '''
-          rm -rf $WORKDIR
-          git clone -b $BRANCH $REPO_URL $WORKDIR
-        '''
-      }
-    }
-
     stage('Instalar dependencias') {
       steps {
         dir("$WORKDIR") {
