@@ -11,7 +11,7 @@ pipeline {
 
             sh '''
               docker run --rm \
-                 -v /home/ec2-user/devops/backend/mynode:/app \
+                 -v /home/ec2-user/devops/backend/nodejsapp:/app \
                  -w /app \
                 node:18 npm install
 '''
