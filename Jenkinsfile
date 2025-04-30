@@ -1,6 +1,8 @@
 pipeline {
   agent any
 
+  stages {  // Agregar la apertura de 'stages'
+  
     stage('Instalar dependencias') {
       steps {
         dir("$WORKDIR") {
@@ -26,5 +28,6 @@ pipeline {
         '''
       }
     }
-  }
 
+  }  // Cierre de 'stages'
+}  // Cierre de 'pipeline'
