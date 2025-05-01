@@ -21,7 +21,6 @@ pipeline {
         }
       }
     }
-"pruebasss"
     stage('Build Docker') {
       steps {
         script {
