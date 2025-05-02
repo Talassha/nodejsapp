@@ -52,7 +52,7 @@ pipeline {
         success {
             mail to: 'salvador.moskeda@gmail.com',
                  subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
-                 body: "El pipeline ha terminado con éxito. El build fue exitoso."
+                 body: "El pipeline ha terminado con éxito. El build fue exitoso eres un crack."
         }
 
  }
