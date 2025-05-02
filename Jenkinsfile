@@ -55,7 +55,7 @@ pipeline {
                  body: "El pipeline ha terminado con éxito. El build fue exitoso."
         }
 
-
+ }
 
 
 
