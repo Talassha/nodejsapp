@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-  res.send('esto se actualizo 5.0!!');
+  res.send('esto se acualizo 5.0!!');
 });
 
 var server = app.listen(3000, function () {
